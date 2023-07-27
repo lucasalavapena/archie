@@ -1,14 +1,45 @@
 <header>
-	<div class="main">
-		<a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+		<div>
+			<div class="main">
+				<a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+			</div>
+
 	</div>
-	<nav>
-		{{ range .Site.Menus.main }}
-		<a href="{{ .URL }}">{{ .Name }}</a>
+
+
+	<div>
+		<nav>
+			<!-- TODO somehow am getting posts twice this is a quick fix -->
+			{{ range after 1 .Site.Menus.main }}
+			<a href="{{ .URL }}">{{ .Name }}</a>
+			{{ end }}
+		</nav>
+		<div class="rightalign">
+
+			{{ with .Translations }}
+			<nav class="language-switcher">
+			{{ range . }}
+				{{ if eq .Language.Lang $.Language.Lang }}
+				<a class="nonunderlink" aria-current="page" href="{{ .RelPermalink }}">{{ .Language.LanguageName }}</a>
+				{{ else }}
+				<a class="nonunderlink" href="{{ .RelPermalink }}">{{ .Language.LanguageName }}</a>
+				{{ end }}
+			{{ end }}
+			</nav>
+			{{ end }}
+		</div>
+		<!-- {{ range site.Menus.main }}
+		{{ .Name }} / {{ .Title }} / {{ .Weight }}
+		<br>
+		{{ with .Children }}
+		  {{ range . }}{{ .Name }}<br>{{ end }}
 		{{ end }}
-		{{ if eq .Site.Params.mode "toggle" -}}
-        | <span id="dark-mode-toggle" onclick="toggleTheme()"></span>
-		<script src="{{ .Site.BaseURL }}js/themetoggle.js"></script>
-		{{ end }}
-	</nav>
+		<hr>
+	{{ end }} -->
+	</div>
+
+
+
+	<!-- {{ partial "allLanguages.html" . }} -->
+
 </header>

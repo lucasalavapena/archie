@@ -75,6 +75,9 @@ img {
   border: 3px solid #ececec;
   max-width: 100%;
 }
+.rightalign {
+  text-align: right;
+}
 
 figure {
   box-sizing: border-box;
@@ -233,6 +236,9 @@ justify-content: space-between;
 }
 .tags a{
   border-bottom: 3px solid var(--maincolor); 
+}
+.nonunderlink {
+  border-bottom: 0px; 
 }
 .tags a:hover{
   color:white;
