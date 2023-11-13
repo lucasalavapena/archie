@@ -14,7 +14,7 @@
 	{{- end -}}
 
 	{{- if isset .Site.Params "onion" -}}
-	<meta http-equiv="onion-location" content="http://{{ .Site.Params.onion }}.onion" />
+	<meta http-equiv="onion-location" content="http://{{ .Site.Params.onion }}.onion{{ .RelPermalink }}" />
 	{{- end -}}
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
